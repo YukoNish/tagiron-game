@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ゲームスタート時のセットアップ
     function startGame() {
-        // ゲームカードの定義
         const numberCards = [
             "赤0", "赤1", "赤2", "赤3", "赤4", "赤6", "赤7", "赤8", "赤9",
             "青0", "青1", "青2", "青3", "青4", "青6", "青7", "青8", "青9",
@@ -23,13 +22,34 @@ document.addEventListener('DOMContentLoaded', function () {
         const sortedPlayerHand = playerHand.sort((a, b) => {
             const numA = parseInt(a.match(/\d+/)[0]);
             const numB = parseInt(b.match(/\d+/)[0]);
-            return numA - numB || a[0] === '赤' ? -1 : 1; // 同じ数字なら赤を左に
+
+            if (numA === numB) {
+                if (a[0] === "赤" && b[0] !== "赤") {
+                    return -1;
+                } else if (a[0] !== "赤" && b[0] === "赤") {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+            return numA - numB;
         });
 
-        // プレイヤーのカード表示
+        // プレイヤーのカードを色付きの数字で表示
+        const playerCardsHTML = sortedPlayerHand.map(card => {
+            const [color, num] = card.split(/(?=\d)/);
+            let colorClass = '';
+            
+            if (color === "赤") colorClass = "red-card";
+            if (color === "青") colorClass = "blue-card";
+            if (color === "黄") colorClass = "yellow-card";
+
+            return `<span class="${colorClass}">${num}</span>`;
+        }).join(", ");
+
         document.getElementById("player-cards").innerHTML = `
             <h2>あなたのカード</h2>
-            <p>${sortedPlayerHand.join(", ")}</p>
+            <p>${playerCardsHTML}</p>
         `;
     }
 
