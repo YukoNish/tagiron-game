@@ -3,12 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Tagiron App - Prototype</title>
+  <style>
+    /* 簡単なスタイルを追加して見やすくします */
+    body { font-family: sans-serif; padding: 20px; background: #f9f9f9; color: #333; }
+    h1 { color: #c71585; }
+    #player-cards, #cpu-cards, #question-cards { margin: 20px 0; padding: 10px; background: #fff; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    button { padding: 10px 20px; background: #c71585; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #e07bb7; }
+  </style>
 </head>
 <body>
 
 <h1>タギロン（仮）</h1>
 
-<!-- スタートボタン -->
+<!-- ゲームスタートボタン -->
 <button id="start-button">ゲームスタート</button>
 
 <div id="player-cards"></div>
@@ -54,7 +62,7 @@ function startGame() {
   // プレイヤーのカード表示
   document.getElementById("player-cards").innerHTML = `<h2>あなたのカード</h2><p>${playerHand.join(", ")}</p>`;
 
-  // CPUのカード（本当は非表示だけど、今はデバッグ用に見せるわね）
+  // CPUのカード（本当は非表示だけど、今はデバッグ用に見せる）
   document.getElementById("cpu-cards").innerHTML = `<h2>CPUのカード（デバッグ用）</h2><p>${cpuHand.join(", ")}</p>`;
 
   // 質問カード表示
