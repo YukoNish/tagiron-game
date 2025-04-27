@@ -1,78 +1,57 @@
-/* ページ全体のスタイル */
+/* 全体のスタイル */
 body {
   font-family: sans-serif;
-  background-color: #f9f9f9;
   padding: 20px;
+  background: #f9f9f9;
   color: #333;
+  text-align: center;
 }
 
-h1 {
-  color: #c71585;
-}
-
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
+/* ゲームのタイトル */
+#game-title {
+  color: black;
+  font-size: 36px;
   margin-bottom: 20px;
 }
 
-button:hover {
-  background-color: #45a049;
-}
-
-/* カードのコンテナ */
-.card-container {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-
-/* 各カード */
-.card {
-  font-size: 24px;
-  font-weight: bold;
-  padding: 10px;
+/* ボタンのスタイル */
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #007bff;
+  color: white;
+  border: none;
   border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* カード表示のスタイル */
+#player-cards, #cpu-cards, #question-cards {
+  margin: 20px 0;
+  padding: 10px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* カードのスタイル */
+.card {
   display: inline-block;
-  text-align: center;
   width: 50px;
-  height: 50px;
-  line-height: 50px;
-}
-
-/* カードの色 */
-.red {
-  background-color: red;
+  height: 70px;
+  margin: 5px;
+  text-align: center;
+  line-height: 70px;
+  font-size: 18px;
+  border-radius: 5px;
   color: white;
+  font-weight: bold;
 }
 
-.blue {
-  background-color: blue;
-  color: white;
-}
-
-.yellow {
-  background-color: yellow;
-  color: black;
-}
-/* 色に対応するクラス */
-.red-card {
-    color: red;
-    font-weight: bold;
-}
-
-.blue-card {
-    color: blue;
-    font-weight: bold;
-}
-
-.yellow-card {
-    color: yellow;
-    font-weight: bold;
-}
+.red { background-color: red; }
+.blue { background-color: blue; }
+.yellow { background-color: yellow; color: black; }
