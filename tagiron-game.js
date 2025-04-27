@@ -11,23 +11,25 @@ function startGame() {
   const playerHand = shuffledNumbers.slice(0, 5);
   const cpuHand = shuffledNumbers.slice(5, 10);
 
-  // プレイヤーのカードを小さい順に並べ、同じ数字は赤を左に
+  // プレイヤーのカードを小さい順に並べる
   const sortedPlayerHand = playerHand.sort((a, b) => {
     const numA = parseInt(a.match(/\d+/)[0]);
     const numB = parseInt(b.match(/\d+/)[0]);
-    if (numA === numB) {
-      // 数字が同じ場合、赤を左に
-      if (a.includes("赤") && !b.includes("赤")) return -1;
-      if (!a.includes("赤") && b.includes("赤")) return 1;
-    }
+    return numA - numB;
+  });
+
+  // CPUのカードも小さい順に並べる
+  const sortedCpuHand = cpuHand.sort((a, b) => {
+    const numA = parseInt(a.match(/\d+/)[0]);
+    const numB = parseInt(b.match(/\d+/)[0]);
     return numA - numB;
   });
 
   // プレイヤーのカード表示
   document.getElementById("player-cards").innerHTML = `<h2>あなたのカード</h2><p>${sortedPlayerHand.join(", ")}</p>`;
 
-  // CPUのカードは表示しない（デバッグ用コメント）
-  // document.getElementById("cpu-cards").innerHTML = `<h2>CPUのカード（デバッグ用）</h2><p>${cpuHand.join(", ")}</p>`;
+  // CPUのカード表示はしない（プレイヤーには見せない）
+  // document.getElementById("cpu-cards").innerHTML = `<h2>CPUのカード（デバッグ用）</h2><p>${sortedCpuHand.join(", ")}</p>`;
 
   // 質問カード表示
   const availableQuestions = shuffledQuestions.slice(0, 6);
