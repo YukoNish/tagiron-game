@@ -37,3 +37,45 @@ function startGame() {
 
 // スタート！
 startGame();
+let currentTurn = 'player'; // ゲーム開始時はプレイヤーのターン
+let playerHand = ["赤3", "青5", "黄5", "赤7", "青1"];  // プレイヤーの手札
+let cpuHand = ["赤2", "青8", "黄5", "青3", "赤9"];    // CPUの手札
+
+function startGame() {
+  // 初期化処理
+  updateTurnDisplay();
+  playerTurn(); // ゲーム開始 → プレイヤーのターン
+}
+
+function playerTurn() {
+  console.log("プレイヤーのターン");
+  // プレイヤーがカードを選ぶ処理（仮）
+  playerHand.pop();  // 例えば1枚カードを使う
+  checkGameOver();   // ゲーム終了判定
+  currentTurn = 'cpu';
+  updateTurnDisplay();
+  cpuTurn(); // 次はCPUのターン
+}
+
+function cpuTurn() {
+  console.log("CPUのターン");
+  cpuHand.pop();  // CPUもカードを1枚使う仮の処理
+  checkGameOver();
+  currentTurn = 'player';
+  updateTurnDisplay();
+  playerTurn(); // 次はプレイヤーのターン
+}
+
+function checkGameOver() {
+  if (playerHand.length === 0 || cpuHand.length === 0) {
+    alert("ゲーム終了");
+  }
+}
+
+function updateTurnDisplay() {
+  const turnDisplay = document.getElementById("turn-display");
+  turnDisplay.innerText = currentTurn === 'player' ? 'あなたのターン' : 'CPUのターン';
+}
+
+// 初期化
+startGame();
