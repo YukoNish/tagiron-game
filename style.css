@@ -1,25 +1,63 @@
-/* カードのスタイル */
+/* ページ全体のスタイル */
+body {
+  font-family: sans-serif;
+  background-color: #f9f9f9;
+  padding: 20px;
+  color: #333;
+}
+
+h1 {
+  color: #c71585;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* カードのコンテナ */
 .card-container {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  margin-top: 20px;
 }
 
+/* 各カード */
 .card {
   font-size: 24px;
   font-weight: bold;
   padding: 10px;
   border-radius: 5px;
+  display: inline-block;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
 }
 
+/* カードの色 */
 .red {
-  color: red;
+  background-color: red;
+  color: white;
 }
 
 .blue {
-  color: blue;
+  background-color: blue;
+  color: white;
 }
 
 .yellow {
-  color: yellow;
+  background-color: yellow;
+  color: black;
 }
