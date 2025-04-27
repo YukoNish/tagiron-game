@@ -66,7 +66,9 @@ function startGame() {
   document.getElementById("cpu-cards").innerHTML = `<h2>CPUのカード（デバッグ用）</h2><div class="card-container">${cpuCardsHtml}</div>`;
 }
 
-// ゲームスタートのボタンにイベントを追加
-document.getElementById("start-game").addEventListener("click", () => {
-  startGame();
+// DOMが完全に読み込まれたらイベントリスナーを設定
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById("start-game").addEventListener("click", function() {
+    startGame();
+  });
 });
