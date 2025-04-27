@@ -1,53 +1,19 @@
-document.getElementById("start-game").addEventListener("click", function() {
-  startGame();
-});
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>タギロン（仮）</title>
+  <link rel="stylesheet" href="style.css"> <!-- 外部CSSファイルをリンク -->
+</head>
+<body>
 
-function startGame() {
-  const shuffledNumbers = shuffle([...numberCards]);
-  const shuffledQuestions = shuffle([...questionCards]);
+  <h1>タギロン（仮）</h1>
+  <button id="start-game">ゲームスタート</button>
 
-  // プレイヤーとCPUの手札を分ける
-  const playerHand = shuffledNumbers.slice(0, 5);
-  const cpuHand = shuffledNumbers.slice(5, 10);
+  <div id="player-cards"></div>
+  <div id="cpu-cards"></div>
+  <div id="question-cards"></div>
 
-  // プレイヤーのカードを小さい順に並べる
-  const sortedPlayerHand = playerHand.sort((a, b) => {
-    const numA = parseInt(a.match(/\d+/)[0]);
-    const numB = parseInt(b.match(/\d+/)[0]);
-    return numA - numB;
-  });
-
-  // CPUのカードも小さい順に並べる
-  const sortedCpuHand = cpuHand.sort((a, b) => {
-    const numA = parseInt(a.match(/\d+/)[0]);
-    const numB = parseInt(b.match(/\d+/)[0]);
-    return numA - numB;
-  });
-
-  // プレイヤーのカード表示
-  document.getElementById("player-cards").innerHTML = `<h2>あなたのカード</h2><div class="card-container">${renderCards(sortedPlayerHand)}</div>`;
-
-  // CPUのカードは表示しない（プレイヤーには見せない）
-  // document.getElementById("cpu-cards").innerHTML = `<h2>CPUのカード（デバッグ用）</h2><div class="card-container">${renderCards(sortedCpuHand)}</div>`;
-
-  // 質問カード表示
-  const availableQuestions = shuffledQuestions.slice(0, 6);
-  document.getElementById("question-cards").innerHTML = `<h2>場の質問カード</h2><p>${availableQuestions.join(", ")}</p>`;
-}
-
-// カードのHTMLをレンダリングする関数
-function renderCards(cards) {
-  return cards.map(card => {
-    const [color, number] = card.split(/(\d+)/);
-    return `<span class="card ${color}">${number}</span>`;
-  }).join('');
-}
-
-// シャッフル関数
-function shuffle(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
+  <script src="tagiron-game.js"></script>
+</body>
+</html>
